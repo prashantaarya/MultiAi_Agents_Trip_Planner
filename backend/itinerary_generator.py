@@ -4,10 +4,18 @@ from langchain_groq import ChatGroq
 from backend.accommodation import suggest_accommodation
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import HumanMessage, AIMessage
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get the API key from environment
+groq_api_key = os.getenv("GROQ_API_KEY")
 
 llm = ChatGroq(
     temperature=0,
-    groq_api_key="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",
+    groq_api_key=groq_api_key,
     model_name="llama-3.3-70b-versatile"
 )
 
